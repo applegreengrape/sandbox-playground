@@ -117,8 +117,9 @@ MEMORY saturation:
 ANOMALY FLAGS:
   [WARN] 1789 major page faults — model not fully warm or WSS > RAM
 ```
-Container: one shared kernel → /proc/meminfo/vmstat describe the host VM, not the sandbox. To get truthful per-sandbox numbers you must read cgroup files instead; to get perf you need --privileged (punches a hole in isolation).
-microVM: the sandbox is a VM with its own guest kernel. Its /proc/meminfo genuinely is the sandbox's memory, /proc/vmstat faults are genuinely its faults, and perf reads the guest's own PMU — unprivileged, no leakage. The USE method "just works" and the numbers are real.
+- Container: one shared kernel → /proc/meminfo/vmstat describe the host VM, not the sandbox. To get truthful per-sandbox numbers you must read cgroup files instead; to get perf you need --privileged (punches a hole in isolation).
+
+- microVM: the sandbox is a VM with its own guest kernel. Its /proc/meminfo genuinely is the sandbox's memory, /proc/vmstat faults are genuinely its faults, and perf reads the guest's own PMU — unprivileged, no leakage. The USE method "just works" and the numbers are real.
 
 
 
